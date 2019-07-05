@@ -1,7 +1,7 @@
 {
   "name": "fast-type-check",
   "description": "A nice, small and fast library for checking data types. Javascript is always a pain with type checking.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/5orenso/fast-type-check",
   "repository": {
     "type": "git",
