@@ -14,7 +14,7 @@
     "name": "Øistein Sørensen",
     "email": "sorenso@gmail.com"
   },
-  "main": "app/app.js",
+  "main": "app/index.js",
   "engines": {
     "node": ">=8.11.0"
   },
