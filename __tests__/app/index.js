@@ -1,11 +1,11 @@
 
 const app = require('../../app/');
 
-describe('app', () => {
+describe('fastTypeCheck', () => {
     describe('Method tests', () => {
-        describe('run', () => {
-            test('should return the correct string', () => {
-                expect(app.run()).toEqual('Yo!');
+        describe('getType', () => {
+            test('should return the correct type', () => {
+                expect(app.getType({})).toEqual('[object Object]');
             });
         });
     });

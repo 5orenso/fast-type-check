@@ -1,9 +1,9 @@
 # Boilerplate for your brand new Node.js module - NPM ready
 
-[![Build Status](https://travis-ci.org/5orenso/node-simple-boilerplate.svg?branch=master)](https://travis-ci.org/5orenso/node-simple-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/5orenso/node-simple-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/5orenso/node-simple-boilerplate?branch=master)
-[![GitHub version](https://badge.fury.io/gh/5orenso%2Fnode-simple-boilerplate.svg)](https://badge.fury.io/gh/5orenso%2Fnode-simple-boilerplate)
-[![npm version](https://badge.fury.io/js/node-simple-boilerplate.svg)](https://badge.fury.io/js/node-simple-boilerplate)
+[![Build Status](https://travis-ci.org/5orenso/fast-type-check.svg?branch=master)](https://travis-ci.org/5orenso/fast-type-check)
+[![Coverage Status](https://coveralls.io/repos/github/5orenso/fast-type-check/badge.svg?branch=master)](https://coveralls.io/github/5orenso/fast-type-check?branch=master)
+[![GitHub version](https://badge.fury.io/gh/5orenso%2Ffast-type-check.svg)](https://badge.fury.io/gh/5orenso%2Ffast-type-check)
+[![npm version](https://badge.fury.io/js/fast-type-check.svg)](https://badge.fury.io/js/fast-type-check)
 
 A small boilerplate to help you kickstart your Node.js module projects with unit tests, integration tests, code coverage, continous integration, code hinting and code style enforcement.
 
@@ -27,8 +27,8 @@ Scanner detecting the use of JavaScript libraries with known vulnerabilities.
 
 ### Howto to get started
 ```bash
-$ git clone git@github.com:5orenso/node-simple-boilerplate.git
-$ cd node-simple-boilerplate/
+$ git clone git@github.com:5orenso/fast-type-check.git
+$ cd fast-type-check/
 $ npm install
 $ bash ./install.sh
 # Follow the instruction.
@@ -50,13 +50,13 @@ $ eslint --fix lib/utilities.js
 ### Howto contribute
 
 ```bash
-$ git clone git@github.com:5orenso/node-simple-boilerplate.git
+$ git clone git@github.com:5orenso/fast-type-check.git
 ```
 Do your magic and create a pull request.
 
 
 ### Howto report issues
-Use the [Issue tracker](https://github.com/5orenso/node-simple-boilerplate/issues)
+Use the [Issue tracker](https://github.com/5orenso/fast-type-check/issues)
 
 
 ### Howto update CHANGELOG.md

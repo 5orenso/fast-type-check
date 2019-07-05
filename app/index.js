@@ -10,10 +10,9 @@
 const path = require('path');
 
 const appPath = path.normalize(`${__dirname}/../`);
-const myApp = `${appPath}lib/myLib`;
+const fastTypeCheckPath = `${appPath}lib/fastTypeCheck`;
 
 // eslint-disable-next-line
-const App = require(myApp);
-const app = new App();
+const FastTypeCheck = require(fastTypeCheckPath);
 
-module.exports = app;
+module.exports = FastTypeCheck;
