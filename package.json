@@ -1,0 +1,57 @@
+{
+  "name": "node-simple-boilerplate",
+  "description": "A nice boilerplate with unit tests, linting and code coverage.",
+  "version": "2.0.0",
+  "homepage": "https://github.com/5orenso/node-simple-boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/5orenso/node-simple-boilerplate"
+  },
+  "bugs": {
+    "url": "https://github.com/5orenso/node-simple-boilerplate/issues"
+  },
+  "author": {
+    "name": "Øistein Sørensen",
+    "email": "sorenso@gmail.com"
+  },
+  "main": "app/app.js",
+  "engines": {
+    "node": ">=8.11.0"
+  },
+  "scripts": {
+    "lint": "eslint ./lib/**/*.js ./app/**/*.js",
+    "test": "jest --coverage",
+    "test:simple": "jest",
+    "test:watch": "jest --watch --onlyChanged",
+    "build": "bash ./bin/build-release.sh",
+    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
+  },
+  "bin": {
+    "node-simple-boilerplate": "./bin/node-simple-boilerplate"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-standard-preact": "^1.1.6",
+    "eslint-plugin-import": "^2.18.0",
+    "jest": "^24.8.0"
+  },
+  "keywords": [],
+  "dependencies": {},
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "NODE_ENV": "test"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src/frontend",
+      "src/shared"
+    ]
+  }
+}
