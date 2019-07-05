@@ -1,14 +1,14 @@
 {
-  "name": "node-simple-boilerplate",
-  "description": "A nice boilerplate with unit tests, linting and code coverage.",
-  "version": "2.0.0",
-  "homepage": "https://github.com/5orenso/node-simple-boilerplate",
+  "name": "fast-type-check",
+  "description": "A nice, small and fast library for checking data types. Javascript is always a pain with type checking.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/5orenso/fast-type-check",
   "repository": {
     "type": "git",
-    "url": "https://github.com/5orenso/node-simple-boilerplate"
+    "url": "https://github.com/5orenso/fast-type-check"
   },
   "bugs": {
-    "url": "https://github.com/5orenso/node-simple-boilerplate/issues"
+    "url": "https://github.com/5orenso/fast-type-check/issues"
   },
   "author": {
     "name": "Øistein Sørensen",
@@ -27,7 +27,7 @@
     "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "bin": {
-    "node-simple-boilerplate": "./bin/node-simple-boilerplate"
+    "fast-type-check": "./bin/fast-type-check"
   },
   "devDependencies": {
     "eslint": "^6.0.1",

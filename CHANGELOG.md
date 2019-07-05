@@ -1,0 +1,2 @@
+* _2019-07-05_: Intial commit with the correct code. (HEAD -> master, origin/master) [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/a6563d54bac9e23fb20419d172c73ad9a5251573">view commit</a>
+* _2019-07-05_: Initial commit [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/89c7cc2608ddf92ba596bb860a3f839dac69ba20">view commit</a>
