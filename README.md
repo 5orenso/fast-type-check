@@ -1,93 +1,59 @@
-# Boilerplate for your brand new Node.js module - NPM ready
+# Fast-type-check to the rescue
 
 [![Build Status](https://travis-ci.org/5orenso/fast-type-check.svg?branch=master)](https://travis-ci.org/5orenso/fast-type-check)
 [![Coverage Status](https://coveralls.io/repos/github/5orenso/fast-type-check/badge.svg?branch=master)](https://coveralls.io/github/5orenso/fast-type-check?branch=master)
 [![GitHub version](https://badge.fury.io/gh/5orenso%2Ffast-type-check.svg)](https://badge.fury.io/gh/5orenso%2Ffast-type-check)
 [![npm version](https://badge.fury.io/js/fast-type-check.svg)](https://badge.fury.io/js/fast-type-check)
 
-A small boilerplate to help you kickstart your Node.js module projects with unit tests, integration tests, code coverage, continous integration, code hinting and code style enforcement.
-
-I've also made everything ready for you so it's easy to publish your new module to the [npmjs.com server](https://npmjs.com).
-
-## Helper modules in use:
-
-__Jest__ A browser JavaScript testing toolkit. Jest is used by Facebook to test all JavaScript code including React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience.
-
-__ESLint__ ESLint is a code style linter for programmatically enforcing your style guide.
-
-__Travis__
-Travis CI is a hosted continuous integration service. It is integrated with GitHub and offers first class support for many languages.
-
-__Coveralls.io__
-Coveralls is a web service to help you track your code coverage over time, and ensure that all your new code is fully covered.
-
-__Retire__
-Scanner detecting the use of JavaScript libraries with known vulnerabilities.
-
+A nice, small and fast library for checking data types. Javascript is always a pain with type checking.
 
 ### Howto to get started
 ```bash
-$ git clone git@github.com:5orenso/fast-type-check.git
-$ cd fast-type-check/
-$ npm install
-$ bash ./install.sh
-# Follow the instruction.
-#     Example path input: ../my-new-module
+$ npm i fast-type-check --save
 ```
 
-Start developing. Remember to start watching your files:
-```bash
-$ npm run test:watch
+### Howto use the module
+```javascript
+const tc = require('fast-type-check');
+
+if (tc.isNumber(123)) {
+    console.log('this is a number :)');
+}
+
+if (tc.isNumber('123')) {
+    console.log('this is not a number :(');
+}
 ```
 
+## Testing methods for datatypes
 
-### HOWTO fix eslint issues
-```bash
-$ eslint --fix lib/utilities.js
-```
+- isArray
+- isObject
+- isString
+- isDate
+- isNumber
+- isFunction
+- isRegexp
+- isBoolean
+- isNull
+- isUndefined
+- isMongoObject
+- isArrayOfObjects
+- isArrayOfArrays
+- isArrayOfStrings
+- isArrayOfNumbers
+- isArrayOfMongoObjects
 
+## Enforcing methods for datatypes
 
-### Howto contribute
-
-```bash
-$ git clone git@github.com:5orenso/fast-type-check.git
-```
-Do your magic and create a pull request.
+- ensureNumber
+- ensureString
+- ensureArray
+- ensureObject
 
 
 ### Howto report issues
 Use the [Issue tracker](https://github.com/5orenso/fast-type-check/issues)
-
-
-### Howto update CHANGELOG.md
-```bash
-$ bash ./changelog.sh
-```
-
-
-### Howto update NPM module
-
-1. Bump version inside `package.json`
-2. Push all changes to Github.
-3. Push all changes to npmjs.com: `$ bash ./npm-release.sh`.
-
-
-### Howto check for vulnerabilities in modules
-```bash
-# Install Node Security Platform CLI
-$ npm install nsp --global  
-
-# From inside your project directory
-$ nsp check  
-```
-
-
-### Howto upgrade modules
-```bash
-$ sudo npm install -g npm-check-updates
-$ ncu -u -a
-$ npm install --no-optional
-```
 
 
 ### Versioning
