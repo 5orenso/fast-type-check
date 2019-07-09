@@ -1,2 +1,8 @@
-* _2019-07-05_: Intial commit with the correct code. (HEAD -> master, origin/master) [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/a6563d54bac9e23fb20419d172c73ad9a5251573">view commit</a>
+* _2019-07-09_: Updated docs (HEAD -> master, origin/master) [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/266bbe5d34d8f6784c5223278cd88e1b985f8287">view commit</a>
+* _2019-07-09_: Added more test functions and uniqArray function. [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/355e1130d81a0daf94941c8fb9e7648007a36882">view commit</a>
+* _2019-07-05_: Bumped version [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/181aa9b42649896e3728fd39d78bf631a0e80884">view commit</a>
+* _2019-07-05_: Fixed npm dependencies. [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/bf4cb7760abc2e4121b9ce9791056d9143f27a7d">view commit</a>
+* _2019-07-05_: Fixed npm bug [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/d63de272241f39cea736d6d62ba1f2c641f397e0">view commit</a>
+* _2019-07-05_: Getting ready for npm [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/8bdcac69c3996aab874ce96f0d3e8642cafffc7d">view commit</a>
+* _2019-07-05_: Intial commit with the correct code. [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/a6563d54bac9e23fb20419d172c73ad9a5251573">view commit</a>
 * _2019-07-05_: Initial commit [Oistein Sorensen] <a href="http://github.com/5orenso/fast-type-check/commit/89c7cc2608ddf92ba596bb860a3f839dac69ba20">view commit</a>
