@@ -609,6 +609,141 @@ describe('fastTypeCheckLib', () => {
             });
         });
 
+        describe('isEqual', () => {
+            test('should return true for number values', () => {
+                expect(tc.isEqual(1, 1)).toBe(true);
+            });
+            test('should return true for NaN === NaN', () => {
+                expect(tc.isEqual(NaN, NaN)).toBe(true);
+            });
+            test('should return true if string values are equal', () => {
+                expect(tc.isEqual('foo', 'foo')).toBe(true);
+            });
+            test('should return true for null === null', () => {
+                expect(tc.isEqual(null, null)).toBe(true);
+            });
+            test('should return true for undefined === undefined', () => {
+                expect(tc.isEqual(undefined, undefined)).toBe(true);
+            });
+            // False comparisons
+            test('should return false for a === b', () => {
+                expect(tc.isEqual('a', 'b')).toBe(false);
+            });
+            test('should return false for 1 === 2', () => {
+                expect(tc.isEqual(1, 2)).toBe(false);
+            });
+            test('should return false for null === undefined', () => {
+                expect(tc.isEqual(null, undefined)).toBe(false);
+            });
+            test('should return false for null === false', () => {
+                expect(tc.isEqual(null, false)).toBe(false);
+            });
+            test('should return false for -0 === +0', () => {
+                expect(tc.isEqual(-0, +0)).toBe(false);
+            });
+            test('should return false for [] === []', () => {
+                expect(tc.isEqual([], [])).toBe(false);
+            });
+            test('should return false for {} === {}', () => {
+                expect(tc.isEqual({}, {})).toBe(false);
+            });
+        });
+
+        describe('isEqualArrays', () => {
+            test('should return true for equal number arrays', () => {
+                expect(tc.isEqualArrays([1, 2], [1, 2])).toBe(true);
+            });
+            test('should return true for equal NaN arrays', () => {
+                expect(tc.isEqualArrays([1, NaN], [1, NaN])).toBe(true);
+            });
+            test('should return true for equal string arrays', () => {
+                expect(tc.isEqualArrays(['foo', 'bar'], ['foo', 'bar'])).toBe(true);
+            });
+            test('should return true for equal null arrays', () => {
+                expect(tc.isEqualArrays([null], [null])).toBe(true);
+            });
+            test('should return true for equal undefined arrays', () => {
+                expect(tc.isEqualArrays([undefined], [undefined])).toBe(true);
+            });
+            test('should return true for equal empty arrays', () => {
+                expect(tc.isEqualArrays([], [])).toBe(true);
+            });
+            // False comparisons
+            test('should return false for not equal number arrays (long, short)', () => {
+                expect(tc.isEqualArrays([1, 2, 3], [2, 3])).toBe(false);
+            });
+            test('should return false for not equal number arrays (short, long)', () => {
+                expect(tc.isEqualArrays([2, 3], [1, 2, 3])).toBe(false);
+            });
+            test('should return false for not equal corner case arrays', () => {
+                expect(tc.isEqualArrays([-0], [+0])).toBe(false);
+            });
+            test('should return false for not equal corner case arrays', () => {
+                expect(tc.isEqualArrays([NaN, 2, 3], [1, NaN, 2, 3])).toBe(false);
+            });
+        });
+
+        describe('isEqualObjects', () => {
+            const obj1 = { foo: 1, bar: 2 };
+            const obj2 = { foo: 1, bar: 2 };
+            const obj3 = { bar: 3, gomle: 4 };
+            const obj4 = { foo: { bar: 1 }, gomle: [2] };
+            const obj5 = { foo: { bar: 1 }, gomle: [2] };
+            const obj6 = { foo: { bar: { gomle: 2 } }, gomle: [2] };
+
+            test('should return true for plain objects', () => {
+                expect(tc.isEqualObjects(obj1, obj2)).toBe(true);
+            });
+            test('should return true for deep objects', () => {
+                expect(tc.isEqualObjects(obj4, obj5)).toBe(true);
+            });
+
+            // False comparisons
+            test('should return false for plain objects not equal', () => {
+                expect(tc.isEqualObjects(obj1, obj3)).toBe(false);
+            });
+            test('should return false for deep objects not equal', () => {
+                expect(tc.isEqualObjects(obj4, obj6)).toBe(false);
+            });
+        });
+
+        describe('isInArray', () => {
+            const finalArrayOfObjects = [
+                { foo: 1, bar: 2 },
+                { gome: 3, foobar: 4 },
+            ];
+            const finalArrayOfArray = [
+                [1, 2, 3],
+                [4, 5, 6],
+            ];
+            test('should return true if object is inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfObjects, { foo: 1, bar: 2 })).toBe(true);
+            });
+            test('should return true if object is inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfObjects, { gome: 3, foobar: 4 })).toBe(true);
+            });
+            test('should return true if array is inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfArray, [1, 2, 3])).toBe(true);
+            });
+            test('should return true if array is inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfArray, [4, 5, 6])).toBe(true);
+            });
+
+            // False comparisons
+            test('should return false if object is not inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfObjects, { foo: 1 })).toBe(false);
+            });
+            test('should return false if number is not inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfObjects, 1)).toBe(false);
+            });
+            test('should return false if string is not inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfObjects, 'foo')).toBe(false);
+            });
+            test('should return false if array is not inside finalArray', () => {
+                expect(tc.isInArray(finalArrayOfArray, [2, 2, 3])).toBe(false);
+            });
+        });
+
         describe('ensureNumber', () => {
             test('should return number no matter input', () => {
                 expect(tc.ensureNumber(1)).toEqual(1);
@@ -685,6 +820,47 @@ describe('fastTypeCheckLib', () => {
                 const date = new Date();
                 expect(tc.ensureObject(date)).toEqual({});
                 expect(tc.ensureObject(new RegExp('foo'))).toEqual({});
+            });
+        });
+
+        describe('ensureUniqArray', () => {
+            const arr1 = [1, 2, 2, 3, 3, 4, 3];
+            const arr1uniq = [1, 2, 3, 4];
+            const arr2 = ['foo', 'bar', 'foo', 'bar', 'foo'];
+            const arr2uniq = ['foo', 'bar'];
+            const arr3 = [{ foo: 1, bar: 2 }, { gomle: 3, foobar: 4 }, { foo: 1, bar: 2 }, { foo: 1, bar: 2 }];
+            const arr3uniq = [{ foo: 1, bar: 2 }, { gomle: 3, foobar: 4 }];
+            const arr4 = [[1, 2], [1, 2], [3, 4, 5], [1, 2]];
+            const arr4uniq = [[1, 2], [3, 4, 5]];
+
+            const arr5 = [1, 'a', 'a', [1, 2], [1, 2], { foo: 1, bar: 2 }, { foo: 1, bar: 2 }];
+            const arr5uniq = [1, 'a', [1, 2], { foo: 1, bar: 2 }];
+
+            const arr6 = [1, 'a', 'a', [1, 2], { foo: 1, bar: 2 }, [1, 2],
+                { foo: { foo: 1, bar: 2 } },
+                { foo: 1, bar: 2 },
+                { foo: 1, bar: 2 },
+                { foo: { foo: 1, bar: 2 } },
+            ];
+            const arr6uniq = [1, 'a', [1, 2], { foo: 1, bar: 2 }, { foo: { foo: 1, bar: 2 } }];
+
+            test('should return uniq array of numbers', () => {
+                expect(tc.ensureUniqArray(arr1)).toEqual(arr1uniq);
+            });
+            test('should return uniq array of strings', () => {
+                expect(tc.ensureUniqArray(arr2)).toEqual(arr2uniq);
+            });
+            test('should return uniq array of objects', () => {
+                expect(tc.ensureUniqArray(arr3)).toEqual(arr3uniq);
+            });
+            test('should return uniq array of arrays', () => {
+                expect(tc.ensureUniqArray(arr4)).toEqual(arr4uniq);
+            });
+            test('should return uniq array of combined values', () => {
+                expect(tc.ensureUniqArray(arr5)).toEqual(arr5uniq);
+            });
+            test('should return uniq array of combined values and deep objects', () => {
+                expect(tc.ensureUniqArray(arr6)).toEqual(arr6uniq);
             });
         });
     });
