@@ -43,6 +43,10 @@ if (tc.isNumber('123')) {
 - isArrayOfStrings
 - isArrayOfNumbers
 - isArrayOfMongoObjects
+- isEqual
+- isEqualArrays
+- isEqualObjects
+- isInArray
 
 ## Enforcing methods for datatypes
 
@@ -50,6 +54,7 @@ if (tc.isNumber('123')) {
 - ensureString
 - ensureArray
 - ensureObject
+- ensureUniqArray
 
 
 ### Howto report issues
