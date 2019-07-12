@@ -2,6 +2,5 @@
 
 const tc = require('fast-type-check');
 
-const myNumber = 123;
-
-console.log(tc.isNumber(myNumber));
+console.log('"123" is a string:', tc.isString("123"));
+console.log('123 is a string:', tc.isString(123));

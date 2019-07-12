@@ -344,16 +344,16 @@ describe('fastTypeCheckLib', () => {
                 expect(tc.isMongoObject({ _id: '1234qwertyuiop' })).toBe(true);
             });
             test('should return false if is array of numbers and strings', () => {
-                expect(tc.isArrayOfMongoObjects([1, 'foo'])).toBe(false);
+                expect(tc.isMongoObject([1, 'foo'])).toBe(false);
             });
             test('should return false if is array of numbers and arrays', () => {
-                expect(tc.isArrayOfMongoObjects([1, []])).toBe(false);
+                expect(tc.isMongoObject([1, []])).toBe(false);
             });
             test('should return false if is array of objects and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([{}, { _id: '123foo' }])).toBe(false);
+                expect(tc.isMongoObject([{}, { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is array of arrays and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([[], { _id: '123foo' }])).toBe(false);
+                expect(tc.isMongoObject([[], { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is undefined', () => {
                 expect(tc.isMongoObject(undefined)).toBe(false);
@@ -387,6 +387,57 @@ describe('fastTypeCheckLib', () => {
             });
         });
 
+        describe('isArrayOfObjects', () => {
+            test('should return true if is array of objects and mongo objects', () => {
+                expect(tc.isArrayOfObjects([{}, { _id: '123foo' }])).toBe(true);
+            });
+            test('should return false if is array of arrays', () => {
+                expect(tc.isArrayOfObjects([[1, 2], [3, 4], [5, 6]])).toBe(false);
+            });
+            test('should return false if is a mongo object', () => {
+                expect(tc.isArrayOfObjects({ _id: '1234qwertyuiop' })).toBe(false);
+            });
+            test('should return false if is array of numbers and strings', () => {
+                expect(tc.isArrayOfObjects([1, 'foo'])).toBe(false);
+            });
+            test('should return false if is array of numbers and arrays', () => {
+                expect(tc.isArrayOfObjects([1, []])).toBe(false);
+            });
+            test('should return false if is array of arrays and mongo objects', () => {
+                expect(tc.isArrayOfObjects([[], { _id: '123foo' }])).toBe(false);
+            });
+            test('should return false if is undefined', () => {
+                expect(tc.isArrayOfObjects(undefined)).toBe(false);
+            });
+            test('should return false if is null', () => {
+                expect(tc.isArrayOfObjects(null)).toBe(false);
+            });
+            test('should return false if is boolean', () => {
+                expect(tc.isArrayOfObjects(true)).toBe(false);
+            });
+            test('should return false if is regexp', () => {
+                expect(tc.isArrayOfObjects(new RegExp('foobar'))).toBe(false);
+            });
+            test('should return false if is function', () => {
+                expect(tc.isArrayOfObjects(() => {})).toBe(false);
+            });
+            test('should return true if is a number', () => {
+                expect(tc.isArrayOfObjects(1)).toBe(false);
+            });
+            test('should return false if is date', () => {
+                expect(tc.isArrayOfObjects(new Date())).toBe(false);
+            });
+            test('should return false if is a string', () => {
+                expect(tc.isArrayOfObjects('foo')).toBe(false);
+            });
+            test('should return false if is an object', () => {
+                expect(tc.isArrayOfObjects({})).toBe(false);
+            });
+            test('should return false if is an array', () => {
+                expect(tc.isArrayOfObjects([])).toBe(false);
+            });
+        });
+
         describe('isArrayOfArrays', () => {
             test('should return false if is array of arrays', () => {
                 expect(tc.isArrayOfArrays([[1, 2], [3, 4], [5, 6]])).toBe(true);
@@ -395,16 +446,16 @@ describe('fastTypeCheckLib', () => {
                 expect(tc.isArrayOfArrays({ _id: '1234qwertyuiop' })).toBe(false);
             });
             test('should return false if is array of numbers and strings', () => {
-                expect(tc.isArrayOfMongoObjects([1, 'foo'])).toBe(false);
+                expect(tc.isArrayOfArrays([1, 'foo'])).toBe(false);
             });
             test('should return false if is array of numbers and arrays', () => {
-                expect(tc.isArrayOfMongoObjects([1, []])).toBe(false);
+                expect(tc.isArrayOfArrays([1, []])).toBe(false);
             });
             test('should return false if is array of objects and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([{}, { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfArrays([{}, { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is array of arrays and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([[], { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfArrays([[], { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is undefined', () => {
                 expect(tc.isArrayOfArrays(undefined)).toBe(false);
@@ -449,16 +500,16 @@ describe('fastTypeCheckLib', () => {
                 expect(tc.isArrayOfStrings({ _id: '1234qwertyuiop' })).toBe(false);
             });
             test('should return false if is array of numbers and strings', () => {
-                expect(tc.isArrayOfMongoObjects([1, 'foo'])).toBe(false);
+                expect(tc.isArrayOfStrings([1, 'foo'])).toBe(false);
             });
             test('should return false if is array of numbers and arrays', () => {
-                expect(tc.isArrayOfMongoObjects([1, []])).toBe(false);
+                expect(tc.isArrayOfStrings([1, []])).toBe(false);
             });
             test('should return false if is array of objects and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([{}, { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfStrings([{}, { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is array of arrays and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([[], { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfStrings([[], { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is undefined', () => {
                 expect(tc.isArrayOfStrings(undefined)).toBe(false);
@@ -506,16 +557,16 @@ describe('fastTypeCheckLib', () => {
                 expect(tc.isArrayOfNumbers({ _id: '1234qwertyuiop' })).toBe(false);
             });
             test('should return false if is array of numbers and strings', () => {
-                expect(tc.isArrayOfMongoObjects([1, 'foo'])).toBe(false);
+                expect(tc.isArrayOfNumbers([1, 'foo'])).toBe(false);
             });
             test('should return false if is array of numbers and arrays', () => {
-                expect(tc.isArrayOfMongoObjects([1, []])).toBe(false);
+                expect(tc.isArrayOfNumbers([1, []])).toBe(false);
             });
             test('should return false if is array of objects and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([{}, { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfNumbers([{}, { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is array of arrays and mongo objects', () => {
-                expect(tc.isArrayOfMongoObjects([[], { _id: '123foo' }])).toBe(false);
+                expect(tc.isArrayOfNumbers([[], { _id: '123foo' }])).toBe(false);
             });
             test('should return false if is undefined', () => {
                 expect(tc.isArrayOfNumbers(undefined)).toBe(false);

@@ -5,27 +5,67 @@
 [![GitHub version](https://badge.fury.io/gh/5orenso%2Ffast-type-check.svg)](https://badge.fury.io/gh/5orenso%2Ffast-type-check)
 [![npm version](https://badge.fury.io/js/fast-type-check.svg)](https://badge.fury.io/js/fast-type-check)
 
-A nice, small and fast library for checking data types. Javascript is always a pain with type checking.
+A nice, small and fast library for checking data types. Javascript is always a pain with type checking and I often end
+up typing `if (typeof myvar === 'string')` too many times.
+
+No external dependencies.
+
 
 ### Howto to get started
+
+Install the module:
 ```bash
 $ npm i fast-type-check --save
 ```
 
 ### Howto use the module
+
+Include it at the top of your script:
 ```javascript
 const tc = require('fast-type-check');
+```
 
+Test if value is a number:
+```javascript
 if (tc.isNumber(123)) {
-    console.log('this is a number :)');
+    console.log('this is a number.');
 }
 
 if (tc.isNumber('123')) {
-    console.log('this is not a number :(');
+    console.log('this is not a number.');
 }
 ```
 
+Test if value is an array of objects:
+```javascript
+const obj = [{}, {}];
+if (tc.isArrayOfObjects(obj)) {
+    console.log('this is an array of objects.')
+}
+```
+
+Make uniq array:
+```javascript
+const arr = [[1, 2], [1, 2], [3, 4, 5], [1, 2]];
+console.log(tc.ensureUniqArray(arr));
+// [[1, 2], [3, 4, 5]]
+```
+
+Works with arrays of objects too:
+```javascript
+const arr = [{ foo: 1, bar: 2 }, { gomle: 3, foobar: 4 }, { foo: 1, bar: 2 }, { foo: 1, bar: 2 }];
+console.log(tc.ensureUniqArray(arr));
+// [{ foo: 1, bar: 2 }, { gomle: 3, foobar: 4 }]
+```
+
+
 ## Testing methods for datatypes
+
+Check if variable is a specific type.
+
+See [tests for usage details](__tests__/lib/fastTypeCheck.js)
+
+All methods returns `true` or `false`.
 
 - isArray
 - isObject
@@ -48,7 +88,12 @@ if (tc.isNumber('123')) {
 - isEqualObjects
 - isInArray
 
+
 ## Enforcing methods for datatypes
+
+Always try to return the required datatype.
+
+See [tests for usage details](__tests__/lib/fastTypeCheck.js)
 
 - ensureNumber
 - ensureString
@@ -58,10 +103,12 @@ if (tc.isNumber('123')) {
 
 
 ### Howto report issues
+
 Use the [Issue tracker](https://github.com/5orenso/fast-type-check/issues)
 
 
 ### Versioning
+
 For transparency and insight into the release cycle, releases will be
 numbered with the follow format:
 
