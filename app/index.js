@@ -15,5 +15,5 @@
 // eslint-disable-next-line
 const FastTypeCheck = require('../lib/fastTypeCheck');
 
-exports.tc = new FastTypeCheck();
+module.exports.tc = new FastTypeCheck();
 module.exports = FastTypeCheck;
