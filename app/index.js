@@ -7,12 +7,13 @@
 
 'use strict';
 
-const path = require('path');
+// const path = require('path');
 
-const appPath = path.normalize(`${__dirname}/../`);
-const fastTypeCheckPath = `${appPath}lib/fastTypeCheck`;
+// const appPath = path.normalize(`${__dirname}/../`);
+// const fastTypeCheckPath = `${appPath}lib/fastTypeCheck`;
 
 // eslint-disable-next-line
-const FastTypeCheck = require(fastTypeCheckPath);
+const FastTypeCheck = require('../lib/fastTypeCheck');
 
+exports.tc = new FastTypeCheck();
 module.exports = FastTypeCheck;

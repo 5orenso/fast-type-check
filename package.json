@@ -1,7 +1,7 @@
 {
   "name": "fast-type-check",
   "description": "A nice, small and fast library for checking data types. Javascript is always a pain with type checking.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/5orenso/fast-type-check",
   "repository": {
     "type": "git",
@@ -30,6 +30,8 @@
     "fast-type-check": "./bin/fast-type-check"
   },
   "devDependencies": {
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",

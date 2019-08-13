@@ -37,14 +37,17 @@ if (tc.isNumber('123')) {
 ```
 
 Test if value is an array of objects:
+
 ```javascript
 const obj = [{}, {}];
 if (tc.isArrayOfObjects(obj)) {
-    console.log('this is an array of objects.')
+    console.log('This is an array of objects.')
+    // This is an array of objects.
 }
 ```
 
 Make uniq array:
+
 ```javascript
 const arr = [[1, 2], [1, 2], [3, 4, 5], [1, 2]];
 console.log(tc.ensureUniqArray(arr));
@@ -52,6 +55,7 @@ console.log(tc.ensureUniqArray(arr));
 ```
 
 Works with arrays of objects too:
+
 ```javascript
 const arr = [{ foo: 1, bar: 2 }, { gomle: 3, foobar: 4 }, { foo: 1, bar: 2 }, { foo: 1, bar: 2 }];
 console.log(tc.ensureUniqArray(arr));
