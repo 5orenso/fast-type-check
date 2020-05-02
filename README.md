@@ -73,6 +73,7 @@ All methods returns `true` or `false`.
 
 - isArray
 - isObject
+- isEmptyObject
 - isString
 - isDate
 - isNumber
@@ -99,11 +100,18 @@ Always try to return the required datatype.
 
 See [tests for usage details](__tests__/lib/fastTypeCheck.js)
 
-- ensureNumber
-- ensureString
-- ensureArray
-- ensureObject
-- ensureUniqArray
+- ensureNumber alias asNumber
+- ensureString alias asString
+- ensureArray alias asArray
+- ensureObject alias asObject
+- ensureUniqArray alias asUniqArray
+- ensureDate alias asDate
+
+
+## Other useful methods
+
+- parseObject
+- cleanObject
 
 
 ### Howto report issues
