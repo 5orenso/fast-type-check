@@ -592,6 +592,8 @@ Get object deep value if it exists.
 
 **Example**  
 ```js
+const tc = require('fast-type-check');
+
 // Let's say you have object:
 conat obj = {
     foo: {
@@ -599,10 +601,10 @@ conat obj = {
     }
 };
 // 1. You want to get the value obj.foo.bar if it exists:
-parseObject(obj, 'foo', 'bar');
+tc.parseObject(obj, 'foo', 'bar');
 // -> returns 1
 // 2. You want to get the value obj.foo.bar.gomle if it exists:
-parseObject(obj, 'foo', 'bar', 'gomle');
+tc.parseObject(obj, 'foo', 'bar', 'gomle');
 // -> returns null
 ```
 <a name="FastTypeCheck.checkNested"></a>
@@ -621,6 +623,8 @@ Check if object has deep value.
 
 **Example**  
 ```js
+const tc = require('fast-type-check');
+
 // Let's say you have object:
 conat obj = {
     foo: {
@@ -628,10 +632,10 @@ conat obj = {
     }
 };
 // 1. You want to get the value obj.foo.bar if it exists:
-checkNested(obj, 'foo', 'bar');
+tc.checkNested(obj, 'foo', 'bar');
 // -> returns true
 // 2. You want to get the value obj.foo.bar.gomle if it exists:
-checkNested(obj, 'foo', 'bar', 'gomle');
+tc.checkNested(obj, 'foo', 'bar', 'gomle');
 // -> returns false
 ```
 <a name="FastTypeCheck.getNestedValue"></a>
@@ -649,6 +653,8 @@ Get object deep value if it exists.
 
 **Example**  
 ```js
+const tc = require('fast-type-check');
+
 // Let's say you have object:
 conat obj = {
     foo: {
@@ -656,10 +662,10 @@ conat obj = {
     }
 };
 // 1. You want to get the value obj.foo.bar if it exists:
-getNestedValue(obj, 'foo.bar');
+tc.getNestedValue(obj, 'foo.bar');
 // -> returns 1
 // 2. You want to get the value obj.foo.bar.gomle if it exists:
-getNestedValue(obj, 'foo.bar.gomle');
+tc.getNestedValue(obj, 'foo.bar.gomle');
 // -> returns null
 ```
 <a name="FastTypeCheck.setNestedValue"></a>
