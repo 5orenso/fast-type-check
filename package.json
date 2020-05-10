@@ -24,7 +24,8 @@
     "test:simple": "jest",
     "test:watch": "jest --watch --onlyChanged",
     "build": "bash ./bin/build-release.sh",
-    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "docs": "node node_modules/jsdoc-to-markdown/bin/cli.js --template README.hbs lib/fastTypeCheck.js > README.md"
   },
   "bin": {
     "fast-type-check": "./bin/fast-type-check"
@@ -37,7 +38,8 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-standard-preact": "^1.1.6",
     "eslint-plugin-import": "^2.18.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "jsdoc-to-markdown": "^5.0.3"
   },
   "keywords": [],
   "dependencies": {},

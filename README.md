@@ -114,6 +114,291 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
 - cleanObject
 
 
+# API Reference
+
+<a name="FastTypeCheck"></a>
+
+## FastTypeCheck
+**Kind**: global class  
+
+* [FastTypeCheck](#FastTypeCheck)
+    * [.getType(element)](#FastTypeCheck.getType) ⇒ <code>string</code>
+    * [.isArray(element)](#FastTypeCheck.isArray) ⇒ <code>boolean</code>
+    * [.isObject(element)](#FastTypeCheck.isObject) ⇒ <code>boolean</code>
+    * [.isEmptyObject(element)](#FastTypeCheck.isEmptyObject) ⇒ <code>boolean</code>
+    * [.isString(element)](#FastTypeCheck.isString) ⇒ <code>boolean</code>
+    * [.isDate(element)](#FastTypeCheck.isDate) ⇒ <code>boolean</code>
+    * [.isNumber(element)](#FastTypeCheck.isNumber) ⇒ <code>boolean</code>
+    * [.isFunction(element)](#FastTypeCheck.isFunction) ⇒ <code>boolean</code>
+    * [.isRegexp(element)](#FastTypeCheck.isRegexp) ⇒ <code>boolean</code>
+    * [.isBoolean(element)](#FastTypeCheck.isBoolean) ⇒ <code>boolean</code>
+    * [.isNull(element)](#FastTypeCheck.isNull) ⇒ <code>boolean</code>
+    * [.isUndefined(element)](#FastTypeCheck.isUndefined) ⇒ <code>boolean</code>
+    * [.isMongoObject(element)](#FastTypeCheck.isMongoObject) ⇒ <code>boolean</code>
+    * [.isArrayOfObjects(element)](#FastTypeCheck.isArrayOfObjects) ⇒ <code>boolean</code>
+    * [.isArrayOfArrays(element)](#FastTypeCheck.isArrayOfArrays) ⇒ <code>boolean</code>
+    * [.isArrayOfStrings(element)](#FastTypeCheck.isArrayOfStrings) ⇒ <code>boolean</code>
+    * [.isArrayOfNumbers(element)](#FastTypeCheck.isArrayOfNumbers) ⇒ <code>boolean</code>
+    * [.isArrayOfMongoObjects(element)](#FastTypeCheck.isArrayOfMongoObjects) ⇒ <code>boolean</code>
+    * [.isEqual(element)](#FastTypeCheck.isEqual) ⇒ <code>boolean</code>
+
+<a name="FastTypeCheck.getType"></a>
+
+### FastTypeCheck.getType(element) ⇒ <code>string</code>
+Get the real type of this element.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>string</code> - Prototype type as a string.  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArray"></a>
+
+### FastTypeCheck.isArray(element) ⇒ <code>boolean</code>
+Check if this is an array or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isObject"></a>
+
+### FastTypeCheck.isObject(element) ⇒ <code>boolean</code>
+Check if this is an object or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isEmptyObject"></a>
+
+### FastTypeCheck.isEmptyObject(element) ⇒ <code>boolean</code>
+Check if this is an empty object or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isString"></a>
+
+### FastTypeCheck.isString(element) ⇒ <code>boolean</code>
+Check if this is a string or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isDate"></a>
+
+### FastTypeCheck.isDate(element) ⇒ <code>boolean</code>
+Check if this is a date or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isNumber"></a>
+
+### FastTypeCheck.isNumber(element) ⇒ <code>boolean</code>
+Check if this is a number or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isFunction"></a>
+
+### FastTypeCheck.isFunction(element) ⇒ <code>boolean</code>
+Check if this is a function or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isRegexp"></a>
+
+### FastTypeCheck.isRegexp(element) ⇒ <code>boolean</code>
+Check if this is a regular expression or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isBoolean"></a>
+
+### FastTypeCheck.isBoolean(element) ⇒ <code>boolean</code>
+Check if this is a boolean or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isNull"></a>
+
+### FastTypeCheck.isNull(element) ⇒ <code>boolean</code>
+Check if this is null or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isUndefined"></a>
+
+### FastTypeCheck.isUndefined(element) ⇒ <code>boolean</code>
+Check if this is undefined or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isMongoObject"></a>
+
+### FastTypeCheck.isMongoObject(element) ⇒ <code>boolean</code>
+Check if this a MongoDB object or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArrayOfObjects"></a>
+
+### FastTypeCheck.isArrayOfObjects(element) ⇒ <code>boolean</code>
+Check if this a string or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArrayOfArrays"></a>
+
+### FastTypeCheck.isArrayOfArrays(element) ⇒ <code>boolean</code>
+Check if this is an array of objects or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArrayOfStrings"></a>
+
+### FastTypeCheck.isArrayOfStrings(element) ⇒ <code>boolean</code>
+Check if this is an array of strings or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArrayOfNumbers"></a>
+
+### FastTypeCheck.isArrayOfNumbers(element) ⇒ <code>boolean</code>
+Check if this is an array of numbers or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isArrayOfMongoObjects"></a>
+
+### FastTypeCheck.isArrayOfMongoObjects(element) ⇒ <code>boolean</code>
+Check if this is an array of MongoDB objects or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.isEqual"></a>
+
+### FastTypeCheck.isEqual(element) ⇒ <code>boolean</code>
+isEqual uses Object.is() and determines whether two values are the same value.
+Two values are the same if one of the following holds:
+
+   - both undefined
+   - both null
+   - both true or both false
+   - both strings of the same length with the same characters in the same order
+   - both the same object (means both object have same reference)
+   - both numbers and
+       - both +0
+       - both -0
+       - both NaN
+       - or both non-zero and both not NaN and both have the same value
+
+This is not the same as being equal according to the == operator.
+The == operator applies various coercions to both sides (if they are not the same Type)
+before testing for equality (resulting in such behavior as "" == false being true),
+but Object.is doesn't coerce either value.
+
+This is also not the same as being equal according to the === operator. The === operator
+(and the == operator as well) treats the number values -0 and +0 as equal and treats
+Number.NaN as not equal to NaN.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| element | <code>\*</code> | 
+
+**Example**  
+```js
+Object.is('foo', 'foo');     // true
+Object.is(window, window);   // true
+
+Object.is('foo', 'bar');     // false
+Object.is([], []);           // false
+
+var foo = { a: 1 };
+var bar = { a: 1 };
+Object.is(foo, foo);         // true
+Object.is(foo, bar);         // false
+
+Object.is(null, null);       // true
+
+// Special Cases
+Object.is(0, -0);            // false
+Object.is(-0, -0);           // true
+Object.is(NaN, 0/0);         // true
+```
+
+### Howto update API docs
+'''bash
+$ npm run docs
+'''
+
 ### Howto report issues
 
 Use the [Issue tracker](https://github.com/5orenso/fast-type-check/issues)
