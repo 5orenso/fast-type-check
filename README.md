@@ -587,23 +587,23 @@ Get object deep value if it exists.
 | --- | --- | --- |
 | Main | <code>object</code> | object. |
 | Name | <code>string</code> | of key on level 1. |
-| Name | <code>string</code> | of key on level 2. ... |
+| Name | <code>string</code> | of key on level 2. |
 | Name | <code>string</code> | of key on level n. |
 
 **Example**  
 ```js
-Let's say you have object:
-     obj = {
-           foo: {
-               bar: 1
-           }
-       };
-   1. You want to get the value obj.foo.bar if it exists:
-     parseObject(obj, 'foo', 'bar');
-         returns 1;
-   2. You want to get the value obj.foo.bar.gomle if it exists:
-     parseObject(obj, 'foo', 'bar', 'gomle');
-         returns null
+// Let's say you have object:
+conat obj = {
+    foo: {
+        bar: 1
+    }
+};
+// 1. You want to get the value obj.foo.bar if it exists:
+parseObject(obj, 'foo', 'bar');
+// -> returns 1
+// 2. You want to get the value obj.foo.bar.gomle if it exists:
+parseObject(obj, 'foo', 'bar', 'gomle');
+// -> returns null
 ```
 <a name="FastTypeCheck.checkNested"></a>
 
@@ -616,7 +616,7 @@ Check if object has deep value.
 | --- | --- | --- |
 | Main | <code>object</code> | object. |
 | Name | <code>string</code> | of key on level 1. |
-| Name | <code>string</code> | Name of key on level 2. ... |
+| Name | <code>string</code> | Name of key on level 2. |
 | Name | <code>string</code> | Name of key on level n. |
 
 **Example**  
