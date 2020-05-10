@@ -140,7 +140,17 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.isArrayOfStrings(element)](#FastTypeCheck.isArrayOfStrings) ⇒ <code>boolean</code>
     * [.isArrayOfNumbers(element)](#FastTypeCheck.isArrayOfNumbers) ⇒ <code>boolean</code>
     * [.isArrayOfMongoObjects(element)](#FastTypeCheck.isArrayOfMongoObjects) ⇒ <code>boolean</code>
-    * [.isEqual(element)](#FastTypeCheck.isEqual) ⇒ <code>boolean</code>
+    * [.isEqual(element, element)](#FastTypeCheck.isEqual) ⇒ <code>boolean</code>
+    * [.isEqualArrays(array1, array2)](#FastTypeCheck.isEqualArrays) ⇒ <code>boolean</code>
+    * [.isEqualObjects(object1, object2)](#FastTypeCheck.isEqualObjects) ⇒ <code>boolean</code>
+    * [.isInArray(array, element)](#FastTypeCheck.isInArray) ⇒ <code>boolean</code>
+    * [.ensureNumber(input)](#FastTypeCheck.ensureNumber) ⇒ <code>number</code>
+    * [.ensureString(input)](#FastTypeCheck.ensureString) ⇒ <code>string</code>
+    * [.ensureArray(input)](#FastTypeCheck.ensureArray) ⇒ <code>array</code>
+    * [.ensureObject(input)](#FastTypeCheck.ensureObject) ⇒ <code>object</code>
+    * [.ensureUniqArray(input)](#FastTypeCheck.ensureUniqArray) ⇒ <code>array</code>
+    * [.ensureDate(input)](#FastTypeCheck.ensureDate) ⇒ <code>array</code>
+    * [.asNumber()](#FastTypeCheck.asNumber)
 
 <a name="FastTypeCheck.getType"></a>
 
@@ -343,7 +353,7 @@ Check if this is an array of MongoDB objects or not.
 
 <a name="FastTypeCheck.isEqual"></a>
 
-### FastTypeCheck.isEqual(element) ⇒ <code>boolean</code>
+### FastTypeCheck.isEqual(element, element) ⇒ <code>boolean</code>
 isEqual uses Object.is() and determines whether two values are the same value.
 Two values are the same if one of the following holds:
 
@@ -372,6 +382,7 @@ Number.NaN as not equal to NaN.
 | Param | Type |
 | --- | --- |
 | element | <code>\*</code> | 
+| element | <code>\*</code> | 
 
 **Example**  
 ```js
@@ -393,11 +404,147 @@ Object.is(0, -0);            // false
 Object.is(-0, -0);           // true
 Object.is(NaN, 0/0);         // true
 ```
+<a name="FastTypeCheck.isEqualArrays"></a>
+
+### FastTypeCheck.isEqualArrays(array1, array2) ⇒ <code>boolean</code>
+Check if these arrays are equal. Checking every value with isEqual.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| array1 | <code>array</code> | 
+| array2 | <code>array</code> | 
+
+<a name="FastTypeCheck.isEqualObjects"></a>
+
+### FastTypeCheck.isEqualObjects(object1, object2) ⇒ <code>boolean</code>
+Check if these objects are equal. Doing a deep equal.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| object1 | <code>object</code> | 
+| object2 | <code>object</code> | 
+
+<a name="FastTypeCheck.isInArray"></a>
+
+### FastTypeCheck.isInArray(array, element) ⇒ <code>boolean</code>
+Check if element is part of array.
+Can be used on:
+    - Array of objects
+    - Array of arrays
+    - Array of simple values.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| array | <code>array</code> | 
+| element | <code>\*</code> | 
+
+<a name="FastTypeCheck.ensureNumber"></a>
+
+### FastTypeCheck.ensureNumber(input) ⇒ <code>number</code>
+Ensure that input is a number.
+If input is:
+    - a number. Returns this number.
+    - an array. Returns 0.
+    - a boolean and true. Returns 0.
+    - a string. Trying to parse number. Returns the value if successful.
+If none of above is successful. Returns 0.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>\*</code> | 
+
+<a name="FastTypeCheck.ensureString"></a>
+
+### FastTypeCheck.ensureString(input) ⇒ <code>string</code>
+Ensure that input is a string.
+If input is:
+    - a string. Returns string.
+    - an array, a number, a date or a boolean. Returns element casted to string.
+If none of above is successful. Returns ''.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>\*</code> | 
+
+<a name="FastTypeCheck.ensureArray"></a>
+
+### FastTypeCheck.ensureArray(input) ⇒ <code>array</code>
+Ensure that input is an array.
+If input is:
+    - an array. Returns array.
+    - a string, a number, a date, a boolean or null. Returns an array with input as the element.
+If none of above is successful. Returns [].
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>\*</code> | 
+
+<a name="FastTypeCheck.ensureObject"></a>
+
+### FastTypeCheck.ensureObject(input) ⇒ <code>object</code>
+Ensure that input is an object.
+If input is:
+    - an object. Returns object.
+    - a non empty string. Returns an object `{ input: input }`.
+    - a number !== 0. Returns an object `{ input: input }`.
+If none of above is successful. Returns {}.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>\*</code> | 
+
+<a name="FastTypeCheck.ensureUniqArray"></a>
+
+### FastTypeCheck.ensureUniqArray(input) ⇒ <code>array</code>
+Ensure that input array has uniq values.
+Removes duplicate values from array.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>array</code> | 
+
+<a name="FastTypeCheck.ensureDate"></a>
+
+### FastTypeCheck.ensureDate(input) ⇒ <code>array</code>
+Ensure that input is a date.
+If input is:
+    - a date: Returns date.
+    - a string: Trying to parse date and returns date if successful.
+    - a number: Trying to figure out if this is an epoch. If successful, returns date.
+If none of above is successful. Returns `null`.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type |
+| --- | --- |
+| input | <code>array</code> | 
+
+<a name="FastTypeCheck.asNumber"></a>
+
+### FastTypeCheck.asNumber()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
 
 ### Howto update API docs
-'''bash
+```bash
 $ npm run docs
-'''
+```
 
 ### Howto report issues
 
