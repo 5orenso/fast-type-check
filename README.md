@@ -621,18 +621,18 @@ Check if object has deep value.
 
 **Example**  
 ```js
-Let's say you have object:
-     obj = {
-           foo: {
-               bar: 1
-           }
-       };
-   1. You want to check if obj.foo.bar exists:
-     checkNested(obj, 'foo', 'bar');
-         returns true
-   2. You want to check if obj.foo.bar.gomle exists:
-     checkNested(obj, 'foo', 'bar', 'gomle');
-         returns false
+// Let's say you have object:
+conat obj = {
+    foo: {
+        bar: 1
+    }
+};
+// 1. You want to get the value obj.foo.bar if it exists:
+checkNested(obj, 'foo', 'bar');
+// -> returns true
+// 2. You want to get the value obj.foo.bar.gomle if it exists:
+checkNested(obj, 'foo', 'bar', 'gomle');
+// -> returns false
 ```
 <a name="FastTypeCheck.getNestedValue"></a>
 
@@ -649,18 +649,18 @@ Get object deep value if it exists.
 
 **Example**  
 ```js
-Let's say you have object:
-     obj = {
-           foo: {
-               bar: 1
-           }
-       };
-   1. You want to get the value of obj.foo.bar if it exists:
-     getNestedValue(obj, 'foo.bar');
-         returns 1
-   2. You want to get the value of obj.foo.bar.gomle if it exists:
-     getNestedValue(obj, 'foo.bar.gomle');
-         returns false
+// Let's say you have object:
+conat obj = {
+    foo: {
+        bar: 1
+    }
+};
+// 1. You want to get the value obj.foo.bar if it exists:
+getNestedValue(obj, 'foo.bar');
+// -> returns 1
+// 2. You want to get the value obj.foo.bar.gomle if it exists:
+getNestedValue(obj, 'foo.bar.gomle');
+// -> returns null
 ```
 <a name="FastTypeCheck.setNestedValue"></a>
 
@@ -669,6 +669,10 @@ Set object deep value.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 **Returns**: <code>object</code> - Object with new value.  
+**Todo**
+
+- [ ] Add example.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -683,6 +687,10 @@ Remove empty key, values from an object.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 **Returns**: <code>object</code> - Cleand object.  
+**Todo**
+
+- [ ] Add example.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
