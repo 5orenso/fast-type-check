@@ -151,6 +151,16 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.ensureUniqArray(input)](#FastTypeCheck.ensureUniqArray) ⇒ <code>array</code>
     * [.ensureDate(input)](#FastTypeCheck.ensureDate) ⇒ <code>array</code>
     * [.asNumber()](#FastTypeCheck.asNumber)
+    * [.asString()](#FastTypeCheck.asString)
+    * [.asArray()](#FastTypeCheck.asArray)
+    * [.asObject()](#FastTypeCheck.asObject)
+    * [.asUniqArray()](#FastTypeCheck.asUniqArray)
+    * [.asDate()](#FastTypeCheck.asDate)
+    * [.parseObject(Main, Name, Name, Name)](#FastTypeCheck.parseObject) ⇒ <code>\*</code>
+    * [.checkNested(Main, Name, Name, Name)](#FastTypeCheck.checkNested) ⇒ <code>true</code> \| <code>false</code>
+    * [.getNestedValue(Main, Path)](#FastTypeCheck.getNestedValue) ⇒ <code>\*</code>
+    * [.setNestedValue(Main, Path, Value)](#FastTypeCheck.setNestedValue) ⇒ <code>object</code>
+    * [.cleanObject(Object)](#FastTypeCheck.cleanObject) ⇒ <code>object</code>
 
 <a name="FastTypeCheck.getType"></a>
 
@@ -539,6 +549,145 @@ If none of above is successful. Returns `null`.
 
 ### FastTypeCheck.asNumber()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureNumber  
+<a name="FastTypeCheck.asString"></a>
+
+### FastTypeCheck.asString()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureString  
+<a name="FastTypeCheck.asArray"></a>
+
+### FastTypeCheck.asArray()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureArray  
+<a name="FastTypeCheck.asObject"></a>
+
+### FastTypeCheck.asObject()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureObject  
+<a name="FastTypeCheck.asUniqArray"></a>
+
+### FastTypeCheck.asUniqArray()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureUniqArray  
+<a name="FastTypeCheck.asDate"></a>
+
+### FastTypeCheck.asDate()
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**See**: ensureDate  
+<a name="FastTypeCheck.parseObject"></a>
+
+### FastTypeCheck.parseObject(Main, Name, Name, Name) ⇒ <code>\*</code>
+Get object deep value if it exists.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>\*</code> - object value  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Main | <code>object</code> | object. |
+| Name | <code>string</code> | of key on level 1. |
+| Name | <code>string</code> | of key on level 2. ... |
+| Name | <code>string</code> | of key on level n. |
+
+**Example**  
+```js
+Let's say you have object:
+     obj = {
+           foo: {
+               bar: 1
+           }
+       };
+   1. You want to get the value obj.foo.bar if it exists:
+     parseObject(obj, 'foo', 'bar');
+         returns 1;
+   2. You want to get the value obj.foo.bar.gomle if it exists:
+     parseObject(obj, 'foo', 'bar', 'gomle');
+         returns null
+```
+<a name="FastTypeCheck.checkNested"></a>
+
+### FastTypeCheck.checkNested(Main, Name, Name, Name) ⇒ <code>true</code> \| <code>false</code>
+Check if object has deep value.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Main | <code>object</code> | object. |
+| Name | <code>string</code> | of key on level 1. |
+| Name | <code>string</code> | Name of key on level 2. ... |
+| Name | <code>string</code> | Name of key on level n. |
+
+**Example**  
+```js
+Let's say you have object:
+     obj = {
+           foo: {
+               bar: 1
+           }
+       };
+   1. You want to check if obj.foo.bar exists:
+     checkNested(obj, 'foo', 'bar');
+         returns true
+   2. You want to check if obj.foo.bar.gomle exists:
+     checkNested(obj, 'foo', 'bar', 'gomle');
+         returns false
+```
+<a name="FastTypeCheck.getNestedValue"></a>
+
+### FastTypeCheck.getNestedValue(Main, Path) ⇒ <code>\*</code>
+Get object deep value if it exists.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>\*</code> - object value  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Main | <code>object</code> | object. |
+| Path | <code>string</code> | to value. |
+
+**Example**  
+```js
+Let's say you have object:
+     obj = {
+           foo: {
+               bar: 1
+           }
+       };
+   1. You want to get the value of obj.foo.bar if it exists:
+     getNestedValue(obj, 'foo.bar');
+         returns 1
+   2. You want to get the value of obj.foo.bar.gomle if it exists:
+     getNestedValue(obj, 'foo.bar.gomle');
+         returns false
+```
+<a name="FastTypeCheck.setNestedValue"></a>
+
+### FastTypeCheck.setNestedValue(Main, Path, Value) ⇒ <code>object</code>
+Set object deep value.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>object</code> - Object with new value.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Main | <code>object</code> | object. |
+| Path | <code>string</code> | to value. |
+| Value | <code>\*</code> | to set. |
+
+<a name="FastTypeCheck.cleanObject"></a>
+
+### FastTypeCheck.cleanObject(Object) ⇒ <code>object</code>
+Remove empty key, values from an object.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>object</code> - Cleand object.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Object | <code>object</code> | to be cleaned. |
+
 
 
 ### Howto update API docs
