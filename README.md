@@ -140,7 +140,7 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.isArrayOfStrings(element)](#FastTypeCheck.isArrayOfStrings) ⇒ <code>boolean</code>
     * [.isArrayOfNumbers(element)](#FastTypeCheck.isArrayOfNumbers) ⇒ <code>boolean</code>
     * [.isArrayOfMongoObjects(element)](#FastTypeCheck.isArrayOfMongoObjects) ⇒ <code>boolean</code>
-    * [.isEqual(element, element)](#FastTypeCheck.isEqual) ⇒ <code>boolean</code>
+    * [.isEqual(a, b)](#FastTypeCheck.isEqual) ⇒ <code>boolean</code>
     * [.isEqualArrays(array1, array2)](#FastTypeCheck.isEqualArrays) ⇒ <code>boolean</code>
     * [.isEqualObjects(object1, object2)](#FastTypeCheck.isEqualObjects) ⇒ <code>boolean</code>
     * [.isInArray(array, element)](#FastTypeCheck.isInArray) ⇒ <code>boolean</code>
@@ -149,18 +149,18 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.ensureArray(input)](#FastTypeCheck.ensureArray) ⇒ <code>array</code>
     * [.ensureObject(input)](#FastTypeCheck.ensureObject) ⇒ <code>object</code>
     * [.ensureUniqArray(input)](#FastTypeCheck.ensureUniqArray) ⇒ <code>array</code>
-    * [.ensureDate(input)](#FastTypeCheck.ensureDate) ⇒ <code>array</code>
+    * [.ensureDate(input)](#FastTypeCheck.ensureDate) ⇒ <code>date</code> \| <code>null</code>
     * [.asNumber()](#FastTypeCheck.asNumber)
     * [.asString()](#FastTypeCheck.asString)
     * [.asArray()](#FastTypeCheck.asArray)
     * [.asObject()](#FastTypeCheck.asObject)
     * [.asUniqArray()](#FastTypeCheck.asUniqArray)
     * [.asDate()](#FastTypeCheck.asDate)
-    * [.parseObject(Main, Name, Name, Name)](#FastTypeCheck.parseObject) ⇒ <code>\*</code>
-    * [.checkNested(Main, Name, Name, Name)](#FastTypeCheck.checkNested) ⇒ <code>true</code> \| <code>false</code>
-    * [.getNestedValue(Main, Path)](#FastTypeCheck.getNestedValue) ⇒ <code>\*</code>
-    * [.setNestedValue(Main, Path, Value)](#FastTypeCheck.setNestedValue) ⇒ <code>object</code>
-    * [.cleanObject(Object)](#FastTypeCheck.cleanObject) ⇒ <code>object</code>
+    * [.parseObject(object, key, [key], [key])](#FastTypeCheck.parseObject) ⇒ <code>\*</code>
+    * [.checkNested(object, key, [key], [key])](#FastTypeCheck.checkNested) ⇒ <code>true</code> \| <code>false</code>
+    * [.getNestedValue(object, path)](#FastTypeCheck.getNestedValue) ⇒ <code>\*</code>
+    * [.setNestedValue(object, path, value)](#FastTypeCheck.setNestedValue) ⇒ <code>object</code>
+    * [.cleanObject(object)](#FastTypeCheck.cleanObject) ⇒ <code>object</code>
 
 <a name="FastTypeCheck.getType"></a>
 
@@ -170,9 +170,9 @@ Get the real type of this element.
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 **Returns**: <code>string</code> - Prototype type as a string.  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArray"></a>
 
@@ -181,9 +181,9 @@ Check if this is an array or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isObject"></a>
 
@@ -192,9 +192,9 @@ Check if this is an object or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isEmptyObject"></a>
 
@@ -203,9 +203,9 @@ Check if this is an empty object or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isString"></a>
 
@@ -214,9 +214,9 @@ Check if this is a string or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isDate"></a>
 
@@ -225,9 +225,9 @@ Check if this is a date or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isNumber"></a>
 
@@ -236,9 +236,9 @@ Check if this is a number or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isFunction"></a>
 
@@ -247,9 +247,9 @@ Check if this is a function or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isRegexp"></a>
 
@@ -258,9 +258,9 @@ Check if this is a regular expression or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isBoolean"></a>
 
@@ -269,9 +269,9 @@ Check if this is a boolean or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isNull"></a>
 
@@ -280,9 +280,9 @@ Check if this is null or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isUndefined"></a>
 
@@ -291,9 +291,9 @@ Check if this is undefined or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isMongoObject"></a>
 
@@ -302,9 +302,9 @@ Check if this a MongoDB object or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArrayOfObjects"></a>
 
@@ -313,9 +313,9 @@ Check if this a string or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArrayOfArrays"></a>
 
@@ -324,9 +324,9 @@ Check if this is an array of objects or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArrayOfStrings"></a>
 
@@ -335,9 +335,9 @@ Check if this is an array of strings or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArrayOfNumbers"></a>
 
@@ -346,9 +346,9 @@ Check if this is an array of numbers or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isArrayOfMongoObjects"></a>
 
@@ -357,13 +357,13 @@ Check if this is an array of MongoDB objects or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
 
 <a name="FastTypeCheck.isEqual"></a>
 
-### FastTypeCheck.isEqual(element, element) ⇒ <code>boolean</code>
+### FastTypeCheck.isEqual(a, b) ⇒ <code>boolean</code>
 isEqual uses Object.is() and determines whether two values are the same value.
 Two values are the same if one of the following holds:
 
@@ -389,10 +389,10 @@ Number.NaN as not equal to NaN.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| element | <code>\*</code> | 
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| a | <code>\*</code> | Element to check. |
+| b | <code>\*</code> | Element to check. |
 
 **Example**  
 ```js
@@ -421,10 +421,10 @@ Check if these arrays are equal. Checking every value with isEqual.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| array1 | <code>array</code> | 
-| array2 | <code>array</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| array1 | <code>array</code> | Array 1 to be checked. |
+| array2 | <code>array</code> | Array 2 to be compared to Array 1. |
 
 <a name="FastTypeCheck.isEqualObjects"></a>
 
@@ -433,10 +433,10 @@ Check if these objects are equal. Doing a deep equal.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| object1 | <code>object</code> | 
-| object2 | <code>object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| object1 | <code>object</code> | Object 1 to be checked. |
+| object2 | <code>object</code> | Object 2 to be compared to Object 1. |
 
 <a name="FastTypeCheck.isInArray"></a>
 
@@ -449,10 +449,10 @@ Can be used on:
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| array | <code>array</code> | 
-| element | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>array</code> | Array to check against. |
+| element | <code>\*</code> | Element to check if exists inside array. |
 
 <a name="FastTypeCheck.ensureNumber"></a>
 
@@ -467,9 +467,9 @@ If none of above is successful. Returns 0.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>\*</code> | Input to be casted to number. |
 
 <a name="FastTypeCheck.ensureString"></a>
 
@@ -482,9 +482,9 @@ If none of above is successful. Returns ''.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>\*</code> | Input to be casted to string. |
 
 <a name="FastTypeCheck.ensureArray"></a>
 
@@ -497,9 +497,9 @@ If none of above is successful. Returns [].
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>\*</code> | Input to be casted to Array. |
 
 <a name="FastTypeCheck.ensureObject"></a>
 
@@ -513,9 +513,9 @@ If none of above is successful. Returns {}.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>\*</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>\*</code> | Input to be casted to Object. |
 
 <a name="FastTypeCheck.ensureUniqArray"></a>
 
@@ -525,13 +525,13 @@ Removes duplicate values from array.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>array</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>array</code> | Input array. |
 
 <a name="FastTypeCheck.ensureDate"></a>
 
-### FastTypeCheck.ensureDate(input) ⇒ <code>array</code>
+### FastTypeCheck.ensureDate(input) ⇒ <code>date</code> \| <code>null</code>
 Ensure that input is a date.
 If input is:
     - a date: Returns date.
@@ -541,43 +541,43 @@ If none of above is successful. Returns `null`.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type |
-| --- | --- |
-| input | <code>array</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| input | <code>array</code> | Input to be casted to Date. |
 
 <a name="FastTypeCheck.asNumber"></a>
 
 ### FastTypeCheck.asNumber()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureNumber  
+**See**: Identical to [ensureNumber](#FastTypeCheck.ensureNumber)  
 <a name="FastTypeCheck.asString"></a>
 
 ### FastTypeCheck.asString()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureString  
+**See**: Identical to [ensureString](#FastTypeCheck.ensureString)  
 <a name="FastTypeCheck.asArray"></a>
 
 ### FastTypeCheck.asArray()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureArray  
+**See**: Identical to [ensureArray](#FastTypeCheck.ensureArray)  
 <a name="FastTypeCheck.asObject"></a>
 
 ### FastTypeCheck.asObject()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureObject  
+**See**: Identical to [ensureObject](#FastTypeCheck.ensureObject)  
 <a name="FastTypeCheck.asUniqArray"></a>
 
 ### FastTypeCheck.asUniqArray()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureUniqArray  
+**See**: Identical to [ensureUniqArray](#FastTypeCheck.ensureUniqArray)  
 <a name="FastTypeCheck.asDate"></a>
 
 ### FastTypeCheck.asDate()
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
-**See**: ensureDate  
+**See**: Identical to [ensureDate](#FastTypeCheck.ensureDate)  
 <a name="FastTypeCheck.parseObject"></a>
 
-### FastTypeCheck.parseObject(Main, Name, Name, Name) ⇒ <code>\*</code>
+### FastTypeCheck.parseObject(object, key, [key], [key]) ⇒ <code>\*</code>
 Get object deep value if it exists.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
@@ -585,10 +585,10 @@ Get object deep value if it exists.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Main | <code>object</code> | object. |
-| Name | <code>string</code> | of key on level 1. |
-| Name | <code>string</code> | of key on level 2. |
-| Name | <code>string</code> | of key on level n. |
+| object | <code>object</code> | Data object to get the value from. |
+| key | <code>string</code> | Name of key on level 1. |
+| [key] | <code>string</code> | Name of key on level 2. |
+| [key] | <code>string</code> | Name of key on level n. |
 
 **Example**  
 ```js
@@ -607,17 +607,17 @@ parseObject(obj, 'foo', 'bar', 'gomle');
 ```
 <a name="FastTypeCheck.checkNested"></a>
 
-### FastTypeCheck.checkNested(Main, Name, Name, Name) ⇒ <code>true</code> \| <code>false</code>
+### FastTypeCheck.checkNested(object, key, [key], [key]) ⇒ <code>true</code> \| <code>false</code>
 Check if object has deep value.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Main | <code>object</code> | object. |
-| Name | <code>string</code> | of key on level 1. |
-| Name | <code>string</code> | Name of key on level 2. |
-| Name | <code>string</code> | Name of key on level n. |
+| object | <code>object</code> | Data object to get the value from. |
+| key | <code>string</code> | Name of key on level 1. |
+| [key] | <code>string</code> | Name of key on level 2. |
+| [key] | <code>string</code> | Name of key on level n. |
 
 **Example**  
 ```js
@@ -636,7 +636,7 @@ checkNested(obj, 'foo', 'bar', 'gomle');
 ```
 <a name="FastTypeCheck.getNestedValue"></a>
 
-### FastTypeCheck.getNestedValue(Main, Path) ⇒ <code>\*</code>
+### FastTypeCheck.getNestedValue(object, path) ⇒ <code>\*</code>
 Get object deep value if it exists.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
@@ -644,8 +644,8 @@ Get object deep value if it exists.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Main | <code>object</code> | object. |
-| Path | <code>string</code> | to value. |
+| object | <code>object</code> | Data object to get the value from. |
+| path | <code>string</code> | Path to value in 'foo.bar.gomle' format. |
 
 **Example**  
 ```js
@@ -664,7 +664,7 @@ getNestedValue(obj, 'foo.bar.gomle');
 ```
 <a name="FastTypeCheck.setNestedValue"></a>
 
-### FastTypeCheck.setNestedValue(Main, Path, Value) ⇒ <code>object</code>
+### FastTypeCheck.setNestedValue(object, path, value) ⇒ <code>object</code>
 Set object deep value.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
@@ -676,13 +676,13 @@ Set object deep value.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Main | <code>object</code> | object. |
-| Path | <code>string</code> | to value. |
-| Value | <code>\*</code> | to set. |
+| object | <code>object</code> | Data object to get the value from. |
+| path | <code>string</code> | Path to value in 'foo.bar.gomle' format. |
+| value | <code>\*</code> | Value to set. |
 
 <a name="FastTypeCheck.cleanObject"></a>
 
-### FastTypeCheck.cleanObject(Object) ⇒ <code>object</code>
+### FastTypeCheck.cleanObject(object) ⇒ <code>object</code>
 Remove empty key, values from an object.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
@@ -694,7 +694,7 @@ Remove empty key, values from an object.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| Object | <code>object</code> | to be cleaned. |
+| object | <code>object</code> | Object to be cleaned. |
 
 
 
