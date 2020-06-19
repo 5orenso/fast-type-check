@@ -93,7 +93,6 @@ All methods returns `true` or `false`.
 - isEqualObjects
 - isInArray
 
-
 ## Enforcing methods for datatypes
 
 Always try to return the required datatype.
@@ -123,6 +122,7 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
 
 * [FastTypeCheck](#FastTypeCheck)
     * [.getType(element)](#FastTypeCheck.getType) ⇒ <code>string</code>
+    * [.isError(element)](#FastTypeCheck.isError) ⇒ <code>boolean</code>
     * [.isArray(element)](#FastTypeCheck.isArray) ⇒ <code>boolean</code>
     * [.isObject(element)](#FastTypeCheck.isObject) ⇒ <code>boolean</code>
     * [.isEmptyObject(element)](#FastTypeCheck.isEmptyObject) ⇒ <code>boolean</code>
@@ -134,6 +134,7 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.isBoolean(element)](#FastTypeCheck.isBoolean) ⇒ <code>boolean</code>
     * [.isNull(element)](#FastTypeCheck.isNull) ⇒ <code>boolean</code>
     * [.isUndefined(element)](#FastTypeCheck.isUndefined) ⇒ <code>boolean</code>
+    * [.isDefined(element)](#FastTypeCheck.isDefined) ⇒ <code>boolean</code>
     * [.isMongoObject(element)](#FastTypeCheck.isMongoObject) ⇒ <code>boolean</code>
     * [.isArrayOfObjects(element)](#FastTypeCheck.isArrayOfObjects) ⇒ <code>boolean</code>
     * [.isArrayOfArrays(element)](#FastTypeCheck.isArrayOfArrays) ⇒ <code>boolean</code>
@@ -144,10 +145,10 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.isEqualArrays(array1, array2)](#FastTypeCheck.isEqualArrays) ⇒ <code>boolean</code>
     * [.isEqualObjects(object1, object2)](#FastTypeCheck.isEqualObjects) ⇒ <code>boolean</code>
     * [.isInArray(array, element)](#FastTypeCheck.isInArray) ⇒ <code>boolean</code>
-    * [.ensureNumber(input)](#FastTypeCheck.ensureNumber) ⇒ <code>number</code>
-    * [.ensureString(input)](#FastTypeCheck.ensureString) ⇒ <code>string</code>
-    * [.ensureArray(input)](#FastTypeCheck.ensureArray) ⇒ <code>array</code>
-    * [.ensureObject(input)](#FastTypeCheck.ensureObject) ⇒ <code>object</code>
+    * [.ensureNumber(input, useUndefined)](#FastTypeCheck.ensureNumber) ⇒ <code>number</code>
+    * [.ensureString(input, useUndefined)](#FastTypeCheck.ensureString) ⇒ <code>string</code>
+    * [.ensureArray(input, useUndefined)](#FastTypeCheck.ensureArray) ⇒ <code>array</code>
+    * [.ensureObject(input, useUndefined)](#FastTypeCheck.ensureObject) ⇒ <code>object</code>
     * [.ensureUniqArray(input)](#FastTypeCheck.ensureUniqArray) ⇒ <code>array</code>
     * [.ensureDate(input)](#FastTypeCheck.ensureDate) ⇒ <code>date</code> \| <code>null</code>
     * [.asNumber()](#FastTypeCheck.asNumber)
@@ -161,6 +162,7 @@ See [tests for usage details](__tests__/lib/fastTypeCheck.js)
     * [.getNestedValue(object, path)](#FastTypeCheck.getNestedValue) ⇒ <code>\*</code>
     * [.setNestedValue(object, path, value)](#FastTypeCheck.setNestedValue) ⇒ <code>object</code>
     * [.cleanObject(object)](#FastTypeCheck.cleanObject) ⇒ <code>object</code>
+    * [.dump(input)](#FastTypeCheck.dump) ⇒ <code>string</code>
 
 <a name="FastTypeCheck.getType"></a>
 
@@ -169,6 +171,17 @@ Get the real type of this element.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 **Returns**: <code>string</code> - Prototype type as a string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
+
+<a name="FastTypeCheck.isError"></a>
+
+### FastTypeCheck.isError(element) ⇒ <code>boolean</code>
+Check if this is an error or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -288,6 +301,17 @@ Check if this is null or not.
 
 ### FastTypeCheck.isUndefined(element) ⇒ <code>boolean</code>
 Check if this is undefined or not.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| element | <code>\*</code> | Element to check. |
+
+<a name="FastTypeCheck.isDefined"></a>
+
+### FastTypeCheck.isDefined(element) ⇒ <code>boolean</code>
+Check if this is defined or not.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
@@ -456,7 +480,7 @@ Can be used on:
 
 <a name="FastTypeCheck.ensureNumber"></a>
 
-### FastTypeCheck.ensureNumber(input) ⇒ <code>number</code>
+### FastTypeCheck.ensureNumber(input, useUndefined) ⇒ <code>number</code>
 Ensure that input is a number.
 If input is:
     - a number. Returns this number.
@@ -467,13 +491,14 @@ If none of above is successful. Returns 0.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| input | <code>\*</code> | Input to be casted to number. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>\*</code> |  | Input to be casted to number. |
+| useUndefined | <code>boolean</code> | <code>false</code> | If not defined, return undefined. |
 
 <a name="FastTypeCheck.ensureString"></a>
 
-### FastTypeCheck.ensureString(input) ⇒ <code>string</code>
+### FastTypeCheck.ensureString(input, useUndefined) ⇒ <code>string</code>
 Ensure that input is a string.
 If input is:
     - a string. Returns string.
@@ -482,13 +507,14 @@ If none of above is successful. Returns ''.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| input | <code>\*</code> | Input to be casted to string. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>\*</code> |  | Input to be casted to string. |
+| useUndefined | <code>boolean</code> | <code>false</code> | If not defined, return undefined. |
 
 <a name="FastTypeCheck.ensureArray"></a>
 
-### FastTypeCheck.ensureArray(input) ⇒ <code>array</code>
+### FastTypeCheck.ensureArray(input, useUndefined) ⇒ <code>array</code>
 Ensure that input is an array.
 If input is:
     - an array. Returns array.
@@ -497,13 +523,14 @@ If none of above is successful. Returns [].
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| input | <code>\*</code> | Input to be casted to Array. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>\*</code> |  | Input to be casted to Array. |
+| useUndefined | <code>boolean</code> | <code>false</code> | If not defined, return undefined. |
 
 <a name="FastTypeCheck.ensureObject"></a>
 
-### FastTypeCheck.ensureObject(input) ⇒ <code>object</code>
+### FastTypeCheck.ensureObject(input, useUndefined) ⇒ <code>object</code>
 Ensure that input is an object.
 If input is:
     - an object. Returns object.
@@ -513,9 +540,10 @@ If none of above is successful. Returns {}.
 
 **Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| input | <code>\*</code> | Input to be casted to Object. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>\*</code> |  | Input to be casted to Object. |
+| useUndefined | <code>boolean</code> | <code>false</code> | If not defined, return undefined. |
 
 <a name="FastTypeCheck.ensureUniqArray"></a>
 
@@ -701,6 +729,19 @@ Remove empty key, values from an object.
 | Param | Type | Description |
 | --- | --- | --- |
 | object | <code>object</code> | Object to be cleaned. |
+
+<a name="FastTypeCheck.dump"></a>
+
+### FastTypeCheck.dump(input) ⇒ <code>string</code>
+Return input as string. Dumping deep objects and other data structures.
+Very handy for debug purposes.
+
+**Kind**: static method of [<code>FastTypeCheck</code>](#FastTypeCheck)  
+**Returns**: <code>string</code> - Dumped object.  
+
+| Param | Type |
+| --- | --- |
+| input | <code>\*</code> | 
 
 
 
